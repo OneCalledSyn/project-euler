@@ -1,4 +1,15 @@
-# Idea: Counting summations is counting partitions except excluding the whole partition
-# So if partitions of n is p(n), then sums of n is p(n) - 1
-# By Euler's pentagonal number theorem: p(100) = 
+# https://mathworld.wolfram.com/PartitionFunctionP.html
+# Use generating function (line 11)
 
+#Dynamic programming method
+
+target = 100
+nums = [x for x in range(1,100)]
+ways = [1] + [0] * target
+
+for num in nums:
+    for i in range(num, target + 1):
+        ways[i] += ways[i - num]
+    print(ways)
+
+print(ways[target])
